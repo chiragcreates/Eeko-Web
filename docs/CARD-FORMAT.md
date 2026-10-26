@@ -19,6 +19,14 @@ __2. Binary Envelope__
 
 The encrypted envelope uses the following layout:
 
+| Field | Size | Description |
+| :--- | :---: | :--- |
+| Magic bytes | 4 bytes | Identifies the envelope as Eeko's supported format |
+| Version | 1 byte | Identifies the envelope format version |
+| Iteration count | 4 bytes | PBKDF2 iteration count, big-endian |
+| Salt | 16 bytes | Random salt used for password-based key derivation |
+| Nonce | 12 bytes | Random AES-GCM nonce |
+| Ciphertext and authentication tag | Variable | Encrypted message data and its authentication tag |
 
 
 The magic bytes are "SQCR".
