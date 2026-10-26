@@ -1,23 +1,14 @@
 Operating system files
 
-.DS_Store
-Thumbs.db
-desktop.ini
+.DS_Store Thumbs.db desktop.ini
 
 Editor and IDE settings
 
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+.vscode/.idea/*.swp*.swo*~
 
 Temporary and backup files
 
-*.tmp
-*.temp
-*.bak
-*.orig
+*.tmp*.temp*.bak*.orig
 
 Logs
 
@@ -25,21 +16,15 @@ Logs
 
 Environment files and secrets
 
-.env
-.env.*
-!.env.example
+.env.env.*!.env.example
 
 Dependencies and generated build output
 
-node_modules/
-dist/
-build/
-coverage/
+node_modules/dist/build/coverage/
 
 Test artifacts
 
-playwright-report/
-test-results/
+playwright-report/test-results/
 
 Local development files
 
