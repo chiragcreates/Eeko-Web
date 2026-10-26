@@ -1,8 +1,8 @@
-Eeko-Web PNG Card Format
+__Eeko-Web PNG Card Format__
 
 This document describes the binary envelope and image encoding used by Eeko-Web to carry encrypted messages in PNG image cards.
 
-1. Overview
+__1. Overview__
 
 Eeko-Web stores encrypted message data inside a PNG image using a custom grid-based encoding scheme.
 
@@ -15,17 +15,11 @@ The process has two stages:
 
 Decryption reverses these stages to recover the encrypted envelope and authenticate the original message.
 
-2. Binary Envelope
+__2. Binary Envelope__
 
 The encrypted envelope uses the following layout:
 
-Field| Size| Description
-Magic bytes| 4 bytes| Identifies the envelope as Eeko's supported format
-Version| 1 byte| Identifies the envelope format version
-Iteration count| 4 bytes| PBKDF2 iteration count, big-endian
-Salt| 16 bytes| Random salt used for password-based key derivation
-Nonce| 12 bytes| Random AES-GCM nonce
-Ciphertext and authentication tag| Variable| Encrypted message data and its authentication tag
+
 
 The magic bytes are "SQCR".
 
@@ -35,7 +29,7 @@ New cards use a PBKDF2 iteration count of "600000". The decoder accepts iteratio
 
 The ciphertext includes the authentication tag produced by the Web Crypto API.
 
-3. Payload Length Prefix
+__3. Payload Length Prefix__
 
 Before the envelope is encoded into image cells, the binary payload is prefixed with a 4-byte unsigned big-endian length value.
 
@@ -45,7 +39,7 @@ The length prefix helps the decoder determine how many reconstructed bytes belon
 
 The decoder should reject invalid lengths and truncated payloads instead of attempting to decrypt incomplete data.
 
-4. Grid-Based Image Encoding
+__4. Grid-Based Image Encoding__
 
 Eeko-Web represents the length-prefixed payload as a sequence of bits.
 
@@ -67,7 +61,7 @@ Bit representation
 
 The decoder samples pixel colors at cell centers to reconstruct the encoded bit sequence.
 
-5. Orientation Anchors
+__5. Orientation Anchors__
 
 Three black square anchors are rendered near the top-left, top-right, and bottom-left portions of the image.
 
@@ -77,7 +71,7 @@ These anchors provide visual reference points for the intended card layout. They
 
 The decoder relies on the expected image layout and grid geometry. Arbitrarily resized, cropped, compressed, or edited images may not decode correctly.
 
-6. Encoding Process
+__6. Encoding Process__
 
 The encoding process is:
 
@@ -91,7 +85,7 @@ The encoding process is:
 
 PNG is used because it supports lossless image storage, which helps preserve the cell patterns needed for decoding.
 
-7. Decoding Process
+__7. Decoding Process__
 
 The decoding process reverses the encoding steps:
 
@@ -107,7 +101,7 @@ The decoding process reverses the encoding steps:
 
 Malformed, incomplete, or unsupported data should be rejected safely.
 
-8. Compatibility
+__8. Compatibility__
 
 Compatibility depends on the binary envelope, payload length convention, bit order, grid dimensions, anchor layout, and decoder behavior remaining consistent.
 
@@ -117,7 +111,7 @@ Future format changes should use an explicit versioning strategy and include reg
 
 Compatibility with Eeko's Python encoder or decoder must be verified through testing. A shared name or similar visual format does not guarantee binary compatibility.
 
-9. Limitations
+__9. Limitations__
 
 - The card layout is not intended to survive arbitrary resizing or cropping.
 - The PNG pattern is not encryption; confidentiality comes from the encrypted envelope.
