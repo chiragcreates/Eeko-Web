@@ -29,19 +29,6 @@ The general encryption flow is:
 7. The binary data is encoded into a PNG image card.
 8. The user downloads the resulting image.
 
-Conceptually:
-
-Plaintext + Password<br>|<br>v<br>Random Salt + PBKDF2
-        |
-        v
-   AES-256-GCM
-        |
-        v
-Ciphertext + Metadata
-        |
-        v
-  PNG Image Card
-
 __3. AES-256-GCM__
 
 AES-GCM is an authenticated encryption mode.
