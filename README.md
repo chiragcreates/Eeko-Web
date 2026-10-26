@@ -1,12 +1,13 @@
-Eeko-Web 🔐
+**Eeko-Web 🔐**
 
 Turn your secret messages into PNG image cards.
 
 Eeko-Web is a browser-based application that encrypts text with a password and encodes the encrypted data into a PNG image card. The recipient can upload the image and enter the correct password to recover the original message.
 
-🌐 Live Demo: "Launch Eeko-Web" (https://chiragcreates.github.io/Eeko-Web/)
+**🌐 Live Demo:**
+"Launch Eeko-Web" (https://chiragcreates.github.io/Eeko-Web/)
 
-✨ Features
+**✨ Features**
 
 - 🔒 Password-based encryption — protect messages with a password.
 - 🖼️ PNG message cards — encode encrypted data into downloadable images.
@@ -16,7 +17,7 @@ Eeko-Web is a browser-based application that encrypts text with a password and e
 - 🧩 Separated source files — HTML, CSS, and JavaScript are organized for easier maintenance.
 - 🆓 Open source — available under the MIT License.
 
-🛠️ Technologies
+**🛠️ Technologies**
 
 - HTML5
 - CSS3
@@ -26,13 +27,13 @@ Eeko-Web is a browser-based application that encrypts text with a password and e
 - PBKDF2 key derivation with HMAC-SHA-256
 - HTML Canvas API for PNG card generation and decoding
 
-🚀 Getting Started
+**🚀 Getting Started**
 
 Use the live application
 
 Visit the "Eeko-Web live demo" (https://chiragcreates.github.io/Eeko-Web/).
 
-Run locally
+**Run locally**
 
 1. Download or clone this repository.
 2. Keep the original folder structure intact.
@@ -42,7 +43,7 @@ Run locally
 
 A secure browser context may be required for Web Crypto API functionality. GitHub Pages provides HTTPS.
 
-📁 Project Structure
+**📁 Project Structure**
 
 Eeko-Web/
 ├── index.html
@@ -54,7 +55,7 @@ Eeko-Web/
 ├── README.md
 └── LICENSE
 
-🔐 Security Overview
+**🔐 Security Overview**
 
 Eeko-Web uses established browser cryptography APIs:
 
@@ -66,7 +67,7 @@ Eeko-Web uses established browser cryptography APIs:
 
 The PNG image is a carrier for encrypted data; the image itself is not the encryption mechanism.
 
-Important security notes
+**Important security notes**
 
 - Choose a strong, unique password and share it securely with the intended recipient.
 - Anyone who obtains a card may attempt to guess its password offline.
@@ -74,7 +75,7 @@ Important security notes
 - Keep backups of important messages and test the decryption process before relying on a card.
 - The project has not been independently security-audited.
 
-🤝 Contributing
+__🤝 Contributing__
 
 Contributions, bug reports, and suggestions are welcome.
 
@@ -85,11 +86,11 @@ Contributions, bug reports, and suggestions are welcome.
 
 Please report potential security issues responsibly rather than publishing sensitive exploit details.
 
-📜 License
+**📜 License**
 
 This project is distributed under the MIT License. See the "LICENSE" (LICENSE) file for details.
 
-👨‍💻 Project
+**👨‍💻 Project**
 
 Eeko-Web — an open-source experiment in password-based message encryption and image-based data encoding.
 
