@@ -6,7 +6,7 @@ title: "[Bug]: "
 labels: bug
 assignees: ''
 
-__Describe the bug_
+__Describe the bug__
 
 A clear description of what went wrong.
 
