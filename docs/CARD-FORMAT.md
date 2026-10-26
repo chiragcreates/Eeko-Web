@@ -131,5 +131,5 @@ __9. Limitations__
 
 ---
 
-Project: "Eeko-Web" (https://github.com/chiragcreates/Eeko-Web)
+Project: "Eeko-Web" https://github.com/chiragcreates/Eeko-Web
 License: MIT
