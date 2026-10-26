@@ -78,6 +78,22 @@ Contributions, bug reports, and suggestions are welcome.
 
 Please report potential security issues responsibly rather than publishing sensitive exploit details.
 
+__🤝 Community & Contributions__
+
+Have an idea to improve Eeko-Web? Contributions and feedback are welcome!
+
+- 🐛 "Report a Bug" (https://github.com/chiragcreates/Eeko-Web/issues/new?template=bug_report.md) — Report problems or unexpected behavior.
+
+- 💡 "Request a Feature" (https://github.com/chiragcreates/Eeko-Web/issues/new?template=feature_request.md) — Suggest new features or improvements.
+
+- 🔧 "Contribute Code" (https://github.com/chiragcreates/Eeko-Web/blob/main/CONTRIBUTING.md) — Read the contribution guidelines before submitting changes.
+
+- 🔐 "Security Policy" (https://github.com/chiragcreates/Eeko-Web/blob/main/SECURITY.md) — Learn how to report security concerns responsibly.
+
+For code contributions, fork the repository, create your changes on a separate branch, and open a Pull Request for review.
+
+Please avoid posting passwords, private messages, or sensitive encrypted data in public issues.
+
 **📜 License**
 
 This project is distributed under the MIT License. See the "LICENSE" (LICENSE) file for details.
