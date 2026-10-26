@@ -31,10 +31,7 @@ The general encryption flow is:
 
 Conceptually:
 
-Plaintext + Password
-        |
-        v
-Random Salt + PBKDF2
+Plaintext + Password<br>|<br>v<br>Random Salt + PBKDF2
         |
         v
    AES-256-GCM
@@ -51,7 +48,7 @@ AES-GCM is an authenticated encryption mode.
 
 Eeko-Web uses a 256-bit AES key. GCM provides two important properties:
 
-- Confidentiality: the original message cannot normally be recovered without the correct key.
+- Confidentiality: the orig<br>nal message cannot normally be recovered without the correct key.
 - Integrity and authenticity: modifications to the encrypted data are detected during decryption.
 
 The authentication tag is included with the ciphertext by the Web Crypto API.
