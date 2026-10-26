@@ -84,13 +84,15 @@ __7. Binary Envelope__
 
 The encrypted envelope contains:
 
-Field| Size
-Magic bytes ("SQCR")| 4 bytes
-Format version| 1 byte
-PBKDF2 iteration count| 4 bytes
-Salt| 16 bytes
-AES-GCM nonce| 12 bytes
-Ciphertext and authentication tag| Variable
+| Field | Size |
+| :--- | ---: |
+| Magic bytes (`SQCR`) | 4 bytes |
+| Format version | 1 byte |
+| PBKDF2 iteration count | 4 bytes |
+| Salt | 16 bytes |
+| AES-GCM nonce | 12 bytes |
+| Ciphertext and authentication tag | Variable |
+
 
 The iteration count is stored as a 4-byte big-endian integer.
 
