@@ -46,22 +46,21 @@ A secure browser context may be required for Web Crypto API functionality. GitHu
 **📁 Project Structure**
 
 Eeko-Web/
+<br>├── index.html
 
-├── index.html
+<br>├── CSS/
 
-├── CSS/
+<br>│   └── styles.css
 
-│   └── styles.css
+<br>├── js/
 
-├── js/
+<br>│   ├── crypto.js
 
-│   ├── crypto.js
+<br>│   └── app.js
 
-│   └── app.js
+<br>├── README.md
 
-├── README.md
-
-└── LICENSE
+<br>└── LICENSE
 
 **🔐 Security Overview**
 
