@@ -53,12 +53,14 @@ Eeko-Web represents the length-prefixed payload as a sequence of bits.
 
 Each bit is represented by one square cell in the PNG image.
 
-Parameter| Value
-Cell size| 16 × 16 pixels
-Image margin| 120 pixels
-Orientation anchors| 3
-Anchor size| 60 × 60 pixels
-Anchor inset| 20 pixels
+| Parameter | Value |
+| :--- | :--- |
+| Cell size | 16 × 16 pixels |
+| Image margin | 120 pixels |
+| Orientation anchors | 3 |
+| Anchor size | 60 × 60 pixels |
+| Anchor inset | 20 pixels |
+
 
 The grid dimensions are selected to accommodate the payload, with the number of rows and columns arranged approximately square.
 
