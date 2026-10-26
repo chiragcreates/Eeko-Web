@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eeko - Encrypt &amp; Unlock</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mono: ['"Space Mono"', '"Courier New"', 'Courier', 'monospace'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        };
+    </script>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="app-workspace mt-4">
+        <!-- SECTION 1: ENCODER -->
+        <div id="encoderSection" class="section-view">
+            <div>
+                <h1 class="text-xl font-normal tracking-tight text-black leading-snug">Create an encrypted card</h1>
+                <p class="text-[11px] text-zinc-600 mt-2 mb-5 leading-relaxed font-mono">Write your message and choose a strong password.</p>
+                <div class="space-y-3">
+                    <div>
+                        <label for="encMessage" class="block text-xs font-normal text-black mb-1.5">Secret message</label>
+                        <textarea id="encMessage" rows="2" class="w-full soft-input rounded-2xl p-3 text-xs leading-relaxed resize-none" placeholder="Type the message you want to protect..."></textarea>
+                    </div>
+                    <div>
+                        <label for="encPassword" class="block text-xs font-normal text-black mb-1.5">Password</label>
+                        <input type="password" id="encPassword" class="w-full soft-input rounded-full px-4 py-2.5 text-xs" placeholder="Create a strong password" autocomplete="new-password">
+                    </div>
+                    <div>
+                        <label for="encConfirm" class="block text-xs font-normal text-black mb-1.5">Confirm password</label>
+                        <input type="password" id="encConfirm" class="w-full soft-input rounded-full px-4 py-2.5 text-xs" placeholder="Enter it again" autocomplete="new-password">
+                    </div>
+                    <button id="btnEncrypt" type="button" onclick="handleEncrypt()" class="w-full black-pill-btn py-3.5 text-xs font-normal tracking-wide uppercase mt-1">
+                        Encrypt Message
+                    </button>
+                    <div class="relative mt-2">
+                        <div class="soft-input rounded-3xl p-3 h-40 flex items-center justify-center relative overflow-hidden bg-[#f8f8f8]">
+                            <span id="encPlaceholder" class="text-xs text-zinc-400 font-mono">( Preview )</span>
+                            <canvas id="cardCanvas" class="max-h-full max-w-full object-contain hidden rounded-lg shadow-sm"></canvas>
+                            <button id="btnDownload" type="button" onclick="downloadCard()" class="hidden absolute bottom-3 right-3 w-9 h-9 bg-black text-white rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all cursor-pointer" aria-label="Download encrypted card" title="Download encrypted card">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 2: DECODER -->
+        <div id="decoderSection" class="section-view hidden">
+            <div>
+                <h1 class="text-xl font-normal tracking-tight text-black leading-snug">Unlock a card</h1>
+                <p class="text-[11px] text-zinc-600 mt-2 mb-5 leading-relaxed font-mono">Upload an encrypted card and enter the key to unlock.</p>
+                <div class="space-y-4">
+                    <div>
+                        <label for="decFile" class="block text-xs font-normal text-black mb-1.5">Encrypted Image</label>
+                        <div class="relative">
+                            <label for="decFile" class="w-full soft-input rounded-full px-2 py-1.5 text-xs flex items-center cursor-pointer">
+                                <span class="bg-white text-black border border-zinc-300 px-3 py-1.5 rounded-full shadow-sm text-[11px] shrink-0">Choose Image</span>
+                                <span id="fileNameDisplay" class="truncate ml-3 text-zinc-500 text-[11px]">No image chosen.</span>
+                            </label>
+                            <input type="file" id="decFile" accept="image/png,image/jpeg,image/webp" class="hidden" onchange="updateFileName(this)">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="decPassword" class="block text-xs font-normal text-black mb-1.5">Password</label>
+                        <input type="password" id="decPassword" class="w-full soft-input rounded-full px-4 py-2.5 text-xs" placeholder="Enter your password." autocomplete="current-password">
+                    </div>
+                    <button id="btnDecrypt" type="button" onclick="handleDecrypt()" class="w-full black-pill-btn py-3.5 text-xs font-normal tracking-wide uppercase mt-1">
+                        Decrypt Message
+                    </button>
+                    <div class="mt-2">
+                        <label for="decResult" class="block text-xs font-normal text-black mb-1">Recovered message</label>
+                        <p id="decSubtext" class="text-[10px] text-zinc-500 mb-2 leading-tight font-mono">
+                            Only someone with the correct password can read the message.
+                        </p>
+                        <div class="soft-input rounded-3xl p-3 min-h-[110px] relative bg-[#f8f8f8]">
+                            <textarea id="decResult" readonly class="w-full h-24 bg-transparent text-xs text-black font-mono resize-none focus:outline-none placeholder-zinc-400" placeholder="" aria-label="Recovered message"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="floating-tab-bar" aria-label="Encryption tools">
+        <button id="tabEncoder" type="button" onclick="switchTab('encoder')" class="tab-btn active" aria-pressed="true">Encoder</button>
+        <button id="tabDecoder" type="button" onclick="switchTab('decoder')" class="tab-btn" aria-pressed="false">Decoder</button>
+    </nav>
+
+    <div id="toast" class="fixed top-5 left-1/2 -translate-x-1/2 bg-black text-white text-xs px-5 py-2.5 rounded-full shadow-2xl opacity-0 transition-opacity duration-300 pointer-events-none z-50 font-mono" role="status" aria-live="polite">
+        <span id="toastMsg">Processing...</span>
+    </div>
+
+    <canvas id="processingCanvas" class="hidden" aria-hidden="true"></canvas>
+
+    <!-- Classic scripts are loaded in dependency order. -->
+    <script src="js/crypto.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
